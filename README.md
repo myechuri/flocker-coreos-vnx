@@ -16,6 +16,12 @@ Get VirtualBox:
 sudo apt-get install virtualbox
 ```
 
+
+Get nfs:
+```
+sudo apt-get install nfs-kernel-server
+```
+
 ## Step 1: provision some CoreOS nodes
 
 * Go to [CloudFormation](https://console.aws.amazon.com/cloudformation/home#/stacks?filter=active)
