@@ -1,13 +1,19 @@
 Run Flocker with VNX driver in CoreOS Vagrant env on Ubuntu 14.04.
 
 # Flocker on CoreOS quickstart
-## Step 0: Get Vagrant 1.6.5
+## Step 0: Get Vagrant and VirtualBox
 
 Default Vagrant install on Ubuntu 14.04 gets version 1.4.3-1, which is unsuitable for CoreOS Vagrant VM (which requires at least 1.6.0). Get Vagrant 1.6.5.
 
 ```
 sudo wget --no-check-certificate https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb
 sudo dpkg -i vagrant_1.6.5_x86_64.deb
+```
+
+Get VirtualBox:
+
+```
+sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list" && wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add - && sudo apt-get update && sudo apt-get install virtualbox-5.0
 ```
 
 ## Step 1: provision some CoreOS nodes
