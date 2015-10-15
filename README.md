@@ -1,7 +1,7 @@
 Run Flocker with VNX driver in CoreOS Vagrant env on Ubuntu 14.04.
 
 # Flocker on CoreOS quickstart
-## Step 0: Get Vagrant and VirtualBox
+## Step 0: Get Vagrant, VirtualBox, NFS
 
 Default Vagrant install on Ubuntu 14.04 gets version 1.4.3-1, which is unsuitable for CoreOS Vagrant VM (which requires at least 1.6.0). Get Vagrant 1.6.5.
 
@@ -22,14 +22,13 @@ Get nfs:
 sudo apt-get install nfs-kernel-server
 ```
 
-## Step 1: provision some CoreOS nodes
 
-* Go to [CloudFormation](https://console.aws.amazon.com/cloudformation/home#/stacks?filter=active)
-* Create a new stack
-* Download [this template](https://raw.githubusercontent.com/ClusterHQ/flocker-coreos/master/coreos-stable-hvm.template) (right click, save file as) to your computer and then upload it to CloudFormation
-   * This is a modified version of the CoreOS CloudFormation template which puts all the nodes in the same AZ (necessary so that they can access the same storage)
-   * It also gives the nodes 50GB root disks, for storing Docker images
-* Follow the on-screen instructions, such as specifying discovery token and access key, and then wait for your nodes to appear in [EC2](https://console.aws.amazon.com/ec2/v2/home)
+## Step 1: provision a CoreOS node
+
+```
+vagrant up
+vagrant ssh core-01
+```
 
 ## Step 2: create `cluster.yml` for Flocker nodes
 
