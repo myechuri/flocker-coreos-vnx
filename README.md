@@ -1,6 +1,13 @@
-TODO update this with latest tweaks from blog post
+Run Flocker with VNX driver in CoreOS Vagrant env on Ubuntu 14.04.
 
 # Flocker on CoreOS quickstart
+## Step 0: Get Vagrant 1.6.5
+
+```
+sudo wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb
+sudo dpkg -i vagrant_1.6.5_x86_64.deb
+```
+
 ## Step 1: provision some CoreOS nodes
 
 * Go to [CloudFormation](https://console.aws.amazon.com/cloudformation/home#/stacks?filter=active)
