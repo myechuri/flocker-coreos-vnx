@@ -74,8 +74,9 @@ Vagrant.configure("2") do |config|
         config.vm.provider :virtualbox do |vb, override|
           vb.customize ["modifyvm", :id, "--chipset", "ich9"]
           vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
+          # Ensure that destination pci bus number is available
           vb.customize ["modifyvm", :id, "--pciattach", "81:00.0@0:08.0"]
-          # vb.customize ["modifyvm", :id, "--pciattach", "81:00.1"]
+          vb.customize ["modifyvm", :id, "--pciattach", "81:00.1@0:08.1"]
         end
       end
 
