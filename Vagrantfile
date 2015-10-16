@@ -121,7 +121,6 @@ Vagrant.configure("2") do |config|
         vb.gui = vm_gui
         vb.memory = vm_memory
         vb.cpus = vm_cpus
-        vb.chipset = "ich9"
       end
 
       ip = "172.17.8.#{i+100}"
