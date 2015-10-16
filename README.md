@@ -16,6 +16,19 @@ Get VirtualBox:
 sudo apt-get install virtualbox
 ```
 
+Get VirtualBox extension pack to enable pci passthrough:
+
+```
+root@sclf200:/root/VirtualBox VMs/flocker-coreos-vnx_core-01_1445001054959_92197/Logs# VBoxManage -v
+4.3.10_Ubuntur93012
+
+root@sclf200:/root/VirtualBox VMs/flocker-coreos-vnx_core-01_1445001054959_92197/Logs# wget http://download.virtualbox.org/virtualbox/4.3.10/Oracle_VM_VirtualBox_Extension_Pack-4.3.10-93012.vbox-extpack -o /tmp/Oracle_VM_VirtualBox_Extension_Pack-4.3.10-93012.vbox-extpack
+
+root@sclf200:/root/VirtualBox VMs/flocker-coreos-vnx_core-01_1445001054959_92197/Logs# VBoxManage extpack install /tmp/Oracle_VM_VirtualBox_Extension_Pack-4.3.10-93012.vbox-extpack
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Successfully installed "Oracle VM VirtualBox Extension Pack".
+
+```
 
 Get nfs:
 ```
