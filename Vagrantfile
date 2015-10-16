@@ -13,7 +13,7 @@ $num_instances = 1
 $instance_name_prefix = "core"
 $update_channel = "alpha"
 $image_version = "current"
-$enable_serial_logging = true
+$enable_fc = true
 $share_home = false
 $vm_gui = false
 $vm_memory = 1024
@@ -70,17 +70,8 @@ Vagrant.configure("2") do |config|
     config.vm.define vm_name = "%s-%02d" % [$instance_name_prefix, i] do |config|
       config.vm.hostname = vm_name
 
-      if $enable_serial_logging
-        logdir = File.join(File.dirname(__FILE__), "log")
-        FileUtils.mkdir_p(logdir)
-
-        serialFile = File.join(logdir, "%s-serial.txt" % vm_name)
-        FileUtils.touch(serialFile)
-
-        config.vm.provider :virtualbox do |vb|
-        # config.vm.provider :virtualbox do |vb, override|
-          vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
-          vb.customize ["modifyvm", :id, "--uartmode1", serialFile]
+      if $enable_fc
+        config.vm.provider :virtualbox do |vb, override|
           vb.customize ["modifyvm", :id, "--chipset", "ich9"]
           vb.customize ["modifyvm", :id, "--pciattach", "81:00.0"]
           vb.customize ["modifyvm", :id, "--pciattach", "81:00.1"]
