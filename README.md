@@ -84,8 +84,8 @@ Check that FC device shows up at expected ``bus:device.function`` inside CoreOS 
 ```
 core@core-01 ~ $ lspci -nn | grep "Fibre Channel"
 00:08.0 Fibre Channel [0c04]: Emulex Corporation Saturn-X: LightPulse Fibre Channel Host Adapter [10df:f100] (rev 03)
+00:08.1 Fibre Channel [0c04]: Emulex Corporation Saturn-X: LightPulse Fibre Channel Host Adapter [10df:f100] (rev 03)
 core@core-01 ~ $
-
 ```
 
 ## Step 2: create `cluster.yml` for Flocker nodes
