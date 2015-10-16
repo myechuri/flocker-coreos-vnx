@@ -63,8 +63,8 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |v|
     # On VirtualBox, we don't have guest additions or a functional vboxsf
     # in CoreOS, so tell Vagrant that so it can be smarter.
-    v.check_guest_additions = false
-    v.functional_vboxsf     = false
+    # v.check_guest_additions = false
+    # v.functional_vboxsf     = false
   end
 
   # plugin conflict
@@ -92,7 +92,8 @@ Vagrant.configure("2") do |config|
           end
         end
 
-        config.vm.provider :virtualbox do |vb, override|
+        config.vm.provider :virtualbox do |vb|
+        # config.vm.provider :virtualbox do |vb, override|
           vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
           vb.customize ["modifyvm", :id, "--uartmode1", serialFile]
           vb.customize ["modifyvm", :id, "--chipset", "ich9"]
