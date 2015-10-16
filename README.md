@@ -50,6 +50,21 @@ vagrant up
 vagrant ssh core-01
 ```
 
+If you do not see FC card inside CoreOS guest, power off the VM, attempt pciattach from host to find out cause of failure:
+
+```
+root@sclf200:~/flocker-coreos-vnx# VBoxManage controlvm flocker-coreos-vnx_core-01_1444996043539_3663 poweroff
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+root@sclf200:~/flocker-coreos-vnx# VBoxManage modifyvm flocker-coreos-vnx_core-01_1444996043539_3663 --pciattach '81:0.0'
+VBoxManage: error: Host PCI attachment only supported with ICH9 chipset
+root@sclf200:~/flocker-coreos-vnx# VBoxManage modifyvm flocker-coreos-vnx_core-01_1444996043539_3663 --chipset ich9
+root@sclf200:~/flocker-coreos-vnx# VBoxManage modifyvm flocker-coreos-vnx_core-01_1444996043539_3663 --pciattach '81:0.0'
+root@sclf200:~/flocker-coreos-vnx#
+
+
+
+```
+
 ## Step 2: create `cluster.yml` for Flocker nodes
 
 * Install [Unofficial Flocker Tools](https://docs.clusterhq.com/en/latest/labs/installer.html)
