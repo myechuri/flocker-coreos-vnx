@@ -73,7 +73,7 @@ Vagrant.configure("2") do |config|
       if $enable_fc
         config.vm.provider :virtualbox do |vb, override|
           vb.customize ["modifyvm", :id, "--chipset", "ich9"]
-          # vb.customize ["modifyvm", :id, "--pciattach", "81:00.0"]
+          vb.customize ["modifyvm", :id, "--pciattach", "81:00.0"]
           # vb.customize ["modifyvm", :id, "--pciattach", "81:00.1"]
         end
       end
