@@ -23,8 +23,28 @@ sudo apt-get install nfs-kernel-server
 ```
 
 
+
 ## Step 1: provision a CoreOS node
 
+### Setup PCI Passthrough for FC
+
+Run ``lspci -nn | grep Fibre`` on the host to find PCI address of the host's FC card:
+
+```
+root@sclf200:~/flocker-coreos-vnx# lspci -nn | grep Fibre
+81:00.0 Fibre Channel [0c04]: Emulex Corporation Saturn-X: LightPulse Fibre Channel Host Adapter [10df:f100] (rev 03)
+81:00.1 Fibre Channel [0c04]: Emulex Corporation Saturn-X: LightPulse Fibre Channel Host Adapter [10df:f100] (rev 03)
+root@sclf200:~/flocker-coreos-vnx#
+```
+
+Edit ``Vagrantfile`` to attach these FC HBAs (both MPIO ports) to the VM's guest.
+
+```
+          vb.customize ["modifyvm", :id, "--pciattach", "81:00.0@81:00.0"]
+          vb.customize ["modifyvm", :id, "--pciattach", "81:00.1@81:00.1"]
+```
+
+### Bring up the CoreOS VM
 ```
 vagrant up
 vagrant ssh core-01
