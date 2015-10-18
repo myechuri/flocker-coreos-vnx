@@ -53,8 +53,8 @@ root@sclf200:~/flocker-coreos-vnx#
 Edit ``Vagrantfile`` to attach these FC HBAs. Please choose destination PCI ``bus:device.function`` numbers such that ``bus`` number is an available PCI bus on guest.
 
 ```
-          vb.customize ["modifyvm", :id, "--pciattach", "81:00.0@0:09.0"]
-          vb.customize ["modifyvm", :id, "--pciattach", "81:00.1@0:09.1"]
+          vb.customize ["modifyvm", :id, "--pciattach", "81:00.0@0:08.0"]
+          vb.customize ["modifyvm", :id, "--pciattach", "81:00.1@0:08.1"]
 ```
 
 ### Bring up the CoreOS VM
